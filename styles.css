@@ -4,11 +4,17 @@
     box-sizing: inherit;
 }
 
+html, body, #wrapper {
+    height: 100%;
+}
+
 body {
     box-sizing: border-box;
 }
 
 #wrapper {
+    display: flex;
+    flex-direction: column;
     margin: 0 auto;
     max-width: 50rem;
     font-family: Open Sans, Arial, sans-serif;
@@ -28,12 +34,13 @@ h1 small {
 
 #controls, #messages-root {
     margin: 0 auto;
+    min-height: 5rem;
     width: 80%;
 }
 
 #messages-root {
+    flex: 1;
     margin: 2rem auto;
-    height: 20rem;
     overflow-y: scroll;
     list-style: none;
 }
@@ -54,7 +61,7 @@ h1 small {
 }
 
 #controls input {
-    width: 90%;
+    width: 80%;
 }
 
 #controls #namer {

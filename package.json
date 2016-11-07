@@ -1,6 +1,6 @@
 {
   "name": "simple_chat",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "A simple chat server with Node, Express and Socket IO",
   "main": "server.js",
   "scripts": {

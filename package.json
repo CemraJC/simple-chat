@@ -4,7 +4,8 @@
   "description": "A simple chat server with Node, Express and Socket IO",
   "main": "server.js",
   "scripts": {
-    "test": "npm run test"
+    "test": "echo No tests mate",
+    "start": "node server.js"
   },
   "keywords": [
     "Chat",

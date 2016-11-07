@@ -2,17 +2,18 @@
 <html>
   <head>
     <title>Simple Chat</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="./styles.css">
   </head>
   <body>
     <div id="wrapper">
-      <h1>Welcome to Simple Chat!</h1>
-      <small>Go ahead and type in the box below:</small>
+      <h1>Welcome to Simple Chat!<br><small>Go ahead and type in the box below:</small></h1>
       <ul id="messages-root">
-        <h3 class="subtle">No Messages Yet</h3>
+        <!-- Messages will appear here -->
       </ul>
       <div id="controls">
         <input id="namer" placeholder="Enter your name" type="text"><br>
-        <input id="sender" type="text">
+        <input id="sender" placeholder="Message" type="text">
         <button id="submitter">Send</button>
       </div>
     </div>
@@ -60,7 +61,7 @@ function appendMessage(root, msg) {
 }
 
 function formatMessage(msg) {
-  var html = "<li><b>" + msg.name + ":</b> " + msg.message + "</li>";
+  var html = "<li class='message'><b>" + msg.name + ":</b> " + msg.message + "</li>";
   return html;
 }
     </script>

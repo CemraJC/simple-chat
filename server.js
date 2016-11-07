@@ -6,6 +6,11 @@ let app = express();
 
 let io = require('socket.io')(app.listen(PORT));
 
+
+app.get('/styles.css', function (req, res) {
+    res.sendFile(__dirname + "/styles.css");
+})
+
 app.get('/', function (req, res) {
     res.sendFile(__dirname + '/index.html');
 })

@@ -7,13 +7,62 @@
     <div id="wrapper">
       <h1>Welcome to Simple Chat!</h1>
       <small>Go ahead and type in the box below:</small>
-      <div class="messages">
+      <ul id="messages-root">
         <h3 class="subtle">No Messages Yet</h3>
-      </div>
-      <form id="controls" action="">
+      </ul>
+      <div id="controls">
+        <input id="namer" placeholder="Enter your name" type="text"><br>
         <input id="sender" type="text">
         <button id="submitter">Send</button>
-      </form>
+      </div>
     </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+window.onload = function() {
+  var message_root = document.querySelector('#messages-root')
+  var form = document.querySelector('#controls');
+  var namer = document.querySelector('#namer');
+  var sender = document.querySelector('#sender');
+  var submitter = document.querySelector('#submitter');
+
+  var socket = io.connect('http://127.0.0.1:8080');
+
+  socket.on('message', function (msg) {
+    appendMessage(message_root, msg);
+  })
+
+  controls.addEventListener('keydown', function (e) {
+    if (e.keyCode === 13) {
+      submitter.click() // Expected behaviour on enter (form elements do this by default)
+    }
+  })
+
+  submitter.addEventListener('click', function (e) {
+    e.preventDefault();
+    var name = getName(namer);
+    socket.emit('send', { message: sender.value, name: name })
+    sender.value = "" // Clear it - expected behaviour
+  })
+}
+
+function getName(node) {
+  if (node.value.length <= 0) {
+    return "John Smith" // Default name
+  } else {
+    return String(node.value)
+  }
+}
+
+function appendMessage(root, msg) {
+  var message_node = document.createElement('li')
+  message_node.innerHTML = formatMessage(msg);
+  root.appendChild(message_node);
+}
+
+function formatMessage(msg) {
+  var html = "<li><b>" + msg.name + ":</b> " + msg.message + "</li>";
+  return html;
+}
+    </script>
   </body>
 </html>

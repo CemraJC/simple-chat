@@ -12,8 +12,8 @@
         <!-- Messages will appear here -->
       </ul>
       <div id="controls">
-        <input id="namer" placeholder="Enter your name" type="text"><br>
-        <input id="sender" placeholder="Message" type="text">
+        <input id="namer" placeholder="John Smith (Type your name)" type="text"><br>
+        <input id="sender" placeholder="Message" autocomplete="off" type="text">
         <button id="submitter">Send</button>
       </div>
     </div>
@@ -58,10 +58,12 @@ function appendMessage(root, msg) {
   var message_node = document.createElement('li')
   message_node.innerHTML = formatMessage(msg);
   root.appendChild(message_node);
+  root.scrollTop = 1e9;
 }
 
 function formatMessage(msg) {
-  var html = "<li class='message'><b>" + msg.name + ":</b> " + msg.message + "</li>";
+  var msg_style = msg.style ? msg.style : "normal"
+  var html = "<li class='message " + msg_style + "'><b>" + msg.name + ":</b> " + msg.message + "</li>";
   return html;
 }
     </script>

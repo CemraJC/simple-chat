@@ -10,7 +10,7 @@ body {
 
 #wrapper {
     margin: 0 auto;
-    max-width: 80rem;
+    max-width: 50rem;
     font-family: Open Sans, Arial, sans-serif;
     color: #222;
 }
@@ -33,11 +33,18 @@ h1 small {
 
 #messages-root {
     margin: 2rem auto;
+    height: 20rem;
+    overflow-y: scroll;
     list-style: none;
 }
 .message {
     color: #444;
     font-family: monospace;
+}
+
+.message.personal {
+    font-style: italic;
+    color: #666;
 }
 
 #controls input, #controls button {
@@ -48,4 +55,14 @@ h1 small {
 
 #controls input {
     width: 90%;
+}
+
+#controls #namer {
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid #777;
+}
+#controls #namer:focus, #controls input:focus {
+    outline: none;
+    border-color: #244BE8;
 }

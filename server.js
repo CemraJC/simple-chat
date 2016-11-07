@@ -16,9 +16,14 @@ app.get('/', function (req, res) {
 })
 
 io.sockets.on('connection', function (socket) {
-    socket.emit('message', { message: "Hello Mate!", name: "Server" })
+    socket.emit('message', { message: "Hello mate! Welcome to Simple Chat.", name: "Server", style: "personal" })
     socket.on('send', function (msg) {
-        console.info("New Message:", msg)
-        io.sockets.emit('message', msg)
+        if (msg.message.trim().length <= 0) {
+            return false; // Can't be sending empty messages!
+        } else {
+            msg.message = msg.message.trim();
+            console.info("New Message:", msg)
+            io.sockets.emit('message', msg)
+        }
     })
 })
